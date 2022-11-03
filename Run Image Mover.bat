@@ -1,0 +1,1 @@
+C:\Users\Philipp\Documents\venv39\Scripts\python.exe C:\Users\Philipp\Documents\Git\image-mover\image_mover.py
