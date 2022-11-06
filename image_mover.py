@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from PyQt5.QtCore import Qt
 from pathlib import Path
 import re
+
 DIR_POSTFIX = "Pano"
 
 
@@ -26,14 +27,14 @@ def handle_drop_files(file_list):
 
 def move_files(file_dict, dir_path):
     for _, file_path in file_dict.items():
-        file_path.rename(dir_path/file_path.name)
+        file_path.rename(dir_path / file_path.name)
     print(f"Moved {str(list(file_dict.keys()))} to {str(dir_path)}")
 
 
 def create_directory(file_dict):
     lowest_file_stem = sorted(file_dict.keys())[0]
     dir_name = f"{lowest_file_stem} {DIR_POSTFIX}"
-    dir_path = Path(file_dict[lowest_file_stem].parent/dir_name)
+    dir_path = Path(file_dict[lowest_file_stem].parent / dir_name)
     dir_path.mkdir(parents=False, exist_ok=False)
     return dir_path
 
@@ -94,7 +95,8 @@ class ImageMover(QWidget):
             event.ignore()
 
 
-app = QApplication(sys.argv)
-demo = ImageMover()
-demo.show()
-sys.exit(app.exec_())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    demo = ImageMover()
+    demo.show()
+    sys.exit(app.exec_())
